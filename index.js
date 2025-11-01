@@ -2,7 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = 3002;
- app.use(cors());
+app.use(cors({
+    origin: [
+      'https://host-red-one.vercel.app',
+      'https://remote-five-zeta.vercel.app'
+    ],
+    credentials: true, // allows cookies/authorization headers
+  }));
  app.use(express.json());
  app.post('/auth/login', (req, res) => {
     const { username, password } = req.body;
